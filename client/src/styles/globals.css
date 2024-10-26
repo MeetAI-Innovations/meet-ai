@@ -1,0 +1,388 @@
+/* globals.css */
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.glassmorphism2 {
+  background: rgba(18, 17, 17, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.instructions > svg {
+  margin-right: 0.25rem;
+}
+
+.offscreen {
+  display: none;
+}
+
+.instructions {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0rem 0rem 1rem 0rem;
+  position: relative;
+  bottom: -10px;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.line {
+  display: inline-block;
+}
+
+.flexGrow {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+:root {
+  --font-sora: "Sora", sans-serif;
+  --font-code: "Source Code Pro", monospace;
+  --font-grotesk: "Space Grotesk", sans-serif;
+  --foreground-rgb: 0, 0, 0;
+  color-scheme: dark;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+.shadow-top {
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+  .h-full {
+    height: 100%;
+  }
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+.bg-primary-gradient {
+  background-image: linear-gradient(92.59deg, #1d4ed8 -2.98%, #5a2fd3 25.29%, #86198f 101.4%);
+}
+
+body {
+  @apply font-sans bg-n-8 text-white text-base;
+}
+
+@layer base {
+  * {
+    @apply border-border !scroll-smooth;
+  }
+}
+
+@layer utilities {
+  .heading {
+    @apply font-bold text-4xl md:text-5xl text-center;
+  }
+  .black-gradient {
+    background: linear-gradient(90deg, #161a31 0%, #06091f 100%);
+  }
+}
+.loader-container {
+   /* Full viewport width */
+   height: 100%;
+   width:100%;
+  position: fixed;
+  top: 0;
+  padding: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  /* transition: all 3s ease-out; */
+  animation: slideUp 2s ease-out ;
+  transition-delay: 3s;
+}
+
+
+.head {
+  font-size: 4vw;
+  height:fit-content;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  font-weight:600;
+  color: transparent;
+  background: linear-gradient(to right, #45c4f9, #7d09ff 50.33%, #ff0be5);
+  -webkit-background-clip: text;
+  opacity: 0;
+  position: absolute; /* Positioning each text absolutely */
+  animation: fadeInOut 1s linear alternate; 
+  animation-delay: 2s;/* Infinite loop for continuous animation */
+}
+
+
+
+.head:nth-child(2) {
+  animation-delay: 2.5s; /* Second text */
+}
+
+.head:nth-child(3) {
+  animation-delay: 3s; /* Third text */
+}
+
+.head:nth-child(4) {
+  animation-delay: 3.5s; /* Fourth text */
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(0); /* Initial position */
+  }
+  50%{
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(-100%); /* Move up and out of view */
+  }
+}
+
+.custom{
+  margin-top: 30px;
+  width:100%;
+  display:flex;
+  align-items:  center;
+  justify-content: center;
+}
+.balls{
+  display: flex;
+}
+.ball{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background-color:white ;
+  margin-right: 10px;
+  animation: ball 0.5s ease infinite alternate;
+}
+.ball2{
+  animation-delay: 0.1s
+
+}
+.ball3{
+  animation-delay: 0.2s
+
+}
+@keyframes ball{
+  to{
+    transform: translateY(-10px)
+  }
+}
+.subMenu {
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+  position: absolute;
+  right: 10px;
+  top: 85px;
+  min-width: 235px;
+  display: none;
+  z-index: 600;
+}
+
+.signInDropdownWrapper:hover .subMenu {
+  display: block;
+}
+@media (min-width: 768px) {
+  .signInDropdownWrapper {
+    float: right;
+    line-height: 71px;
+    position: relative;
+  }
+
+  .subMenu {
+    display: none;
+  }
+
+  .signInDropdownWrapper:hover .subMenu {
+    display: block;
+  }
+}
+.presentation li:first-child:before {
+  right: 20px;
+}
+.presentation li:first-child:before {
+  border-color: transparent transparent #fff transparent;
+  border-style: solid;
+  border-width: 0 10px 10px 10px;
+  content: "";
+  height: 0;
+  position: absolute;
+  top: -9px;
+  width: 0;
+}
+
+.skeleton-bg {
+  background-color: #1c1c1c;
+}
+
+
+.rotate-45 {
+  @apply rotate-[45deg];
+}
+
+.rotate-90 {
+  @apply rotate-[90deg];
+}
+
+.rotate-135 {
+  @apply rotate-[135deg];
+}
+
+.rotate-180 {
+  @apply rotate-[180deg];
+}
+
+.rotate-225 {
+  @apply rotate-[225deg];
+}
+
+.rotate-270 {
+  @apply rotate-[270deg];
+}
+
+.rotate-315 {
+  @apply rotate-[315deg];
+}
+
+.rotate-360 {
+  @apply rotate-[360deg];
+}
+
+.-rotate-45 {
+  @apply rotate-[-45deg];
+}
+
+.-rotate-90 {
+  @apply rotate-[-90deg];
+}
+
+.-rotate-135 {
+  @apply rotate-[-135deg];
+}
+
+.-rotate-180 {
+  @apply rotate-[-180deg];
+}
+
+.-rotate-225 {
+  @apply rotate-[-225deg];
+}
+
+.-rotate-270 {
+  @apply rotate-[-270deg];
+}
+
+.-rotate-315 {
+  @apply rotate-[-315deg];
+}
+
+.-rotate-360 {
+  @apply rotate-[-360deg];
+}

@@ -2,10 +2,10 @@ import React from 'react';
 
  function Heading() {
   return (
-    <div className="flex flex-col items-center justify-center ml-1 md:ml-10">
-      <div className="flex justify-center items-center mt-10 md:mt-20 font-bold text-center ">
+    <div className="pt-[2rem]  flex flex-col items-center justify-center ml-1 md:ml-10">
+      <div className="flex justify-center items-center mt-0 md:mt-10 font-bold text-center">
         <h1 className="text-white text-3xl md:text-5xl">
-          Professionals of all types get more done with Room
+          Professionals of all types get more done with MeetAi
         </h1>
       </div>
 
@@ -20,10 +20,10 @@ import React from 'react';
         Requirement
         </a>
 
-        <input
+        {/* <input
           className="search-input w-64 md:w-96 h-9 bg-slate-700 text-white placeholder-white px-4 mt-2 md:mt-0"
           placeholder="Search..."
-        />
+        /> */}
       </div>
     </div>
   );

@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 # MeetAI
+=======
+>>>>>>> dev
 
 MeetAI is a web-based application that facilitates online meetings and generates automatic summaries of the discussions. The platform is designed to make meetings more efficient by providing participants with easy-to-read summaries, ensuring that everyone stays informed, even if they couldn't attend the meeting.
 

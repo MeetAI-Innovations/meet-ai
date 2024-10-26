@@ -13,7 +13,7 @@ import { BentoGrid, BentoGridItem } from "../../Review_Bento";
 
  function FeaturedSection() {
   return (
-    <BentoGrid className="max-w-4xl mx-auto">
+    <BentoGrid className="max-w-4xl mx-auto mb-10 mt-10">
       {items.map((item, i) => (
         <BentoGridItem
           key={i}

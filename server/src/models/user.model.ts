@@ -1,13 +1,16 @@
 import mongoose, { Model } from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { accessTokenExpiry, accessTokenSecret, refreshTokenExpiry, refreshTokenSecret } from "../config/envConfig";
 
 export interface IUser extends mongoose.Document {
   userName: string;
   fullName: string;
+  OauthId:string,
   email: string;
   password: any;
   role: string;
+  avatar: string;
   refreshToken: any;
   generateAccessToken(): string;
   generateRefreshToken(): string;
@@ -33,14 +36,22 @@ const userSchema = new mongoose.Schema<IUser>(
       required: true,
       trim: true,
     },
+    OauthId:{
+      type:String,
+      unique:true
+    },
     password: {
       type: String,
-      required: true,
+      required: function(){return !this.OauthId},
       trim: true,
+      default:null
     },
     role: {
       type: String,
       enum: ["host", "participant", "guest"],
+    },
+    avatar: {
+      type: String
     },
     refreshToken: {
       type: String,
@@ -71,9 +82,9 @@ userSchema.methods.generateAccessToken = function (): string {
       userName: this.userName,
       email: this.email,
     },
-    process.env.ACCESS_TOKEN_SECRET as string,
+    accessTokenSecret as string,
     {
-      expiresIn: process.env.ACCESS_TOKEN_EXPIRY,
+      expiresIn: accessTokenExpiry,
     }
   );
 };
@@ -83,9 +94,9 @@ userSchema.methods.generateRefreshToken = function (): string {
     {
       id: this._id,
     },
-    process.env.REFRESH_TOKEN_SECRET as string,
+    refreshTokenSecret as string,
     {
-      expiresIn: process.env.REFRESH_TOKEN_EXPIRY,
+      expiresIn: refreshTokenExpiry,
     }
   );
 };

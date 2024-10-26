@@ -4,6 +4,8 @@
 ### NextJS ###
 # dependencies
 /node_modules
+.env
+./.env.local
 /.pnp
 .pnp.js
 
@@ -24,7 +26,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
-.env*.local
+
 
 # vercel
 .vercel
@@ -104,11 +106,15 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variable files
-.env
+# .env
+.env.local
 .env.development.local
 .env.test.local
 .env.production.local
-.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+# .env.local
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache

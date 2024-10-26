@@ -1,57 +1,78 @@
-import mongoose ,{Schema,Document, ObjectId, model} from "mongoose";
+import mongoose, { Schema, Document, ObjectId, model } from "mongoose";
 
-interface IMeeting extends Document{
-    _id : ObjectId ;
-    title : string ;
-    participants:Schema.Types.ObjectId[];
-    description ?: string ;
-    scheduledTime : Date ;
-    duration: number;
-    createdBy : Schema.Types.ObjectId;
-    status: 'scheduled'|'not scheduled' | 'completed' | 'canceled';
-    endTime ?: Date ;
-    host: Schema.Types.ObjectId;
-    roomId: string; // Unique room ID
+export interface IMeeting extends Document {
+  _id: ObjectId;
+  title: string;
+  participants: [];
+  description?: string;
+  scheduledTime: Date;
+  duration: number;
+  createdBy: Schema.Types.ObjectId;
+  status: "scheduled" | "not scheduled" | "completed" | "canceled";
+  endTime?: Date;
+  host: Schema.Types.ObjectId;
+  type: "public" | "private";
+  roomId: string; // Unique room ID
+  enableSummary: boolean; // To check if the user wants the summary of the meeting
+  dialogues: string;
+  summary: string;
 }
 
-
-const MeetingSchema = new Schema<IMeeting>({
+const MeetingSchema = new Schema<IMeeting>(
+  {
     title: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     description: {
-        type: String
+      type: String,
     },
-    participants: [{
-        type: Schema.Types.ObjectId,
-        ref: "User"
-    }],
+    participants: [],
     scheduledTime: {
-        type: Date,
-        required: true,
+      type: Date,
+      default: Date.now(),
+    },
+    endTime: {
+      type: Date
     },
     createdBy: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-        required: true,
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
     status: {
-        type: String,
-        enum: ['scheduled', 'not scheduled', 'completed', 'canceled'],
-        default: "scheduled",
+      type: String,
+      enum: ["scheduled", "not scheduled", "completed", "canceled"],
+      default: "scheduled",
     },
     host: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
+      type: Schema.Types.ObjectId,
+      ref: "User",
     },
     roomId: {
-        type: String,
-        required: true,
-        unique: true
+      type: String,
+      required: true,
+      unique: true,
+    },
+    type: {
+      type: String,
+      enum: ["public", "private"],
+    },
+    enableSummary:{
+      type:Boolean,
+      required:true,
+      default:false
+    },
+    dialogues: {
+      type: String,
+    },
+    summary: {
+      type: String
     }
-},{timestamps: true})
+  },
+  { timestamps: true }
+);
 
 const Meeting = model<IMeeting>("Meeting", MeetingSchema);
 
-export default Meeting
+export default Meeting;

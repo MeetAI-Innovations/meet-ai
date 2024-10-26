@@ -1,58 +1,40 @@
-// tailwind.config.js
-const defaultTheme = require("tailwindcss/defaultTheme");
-const colors = require("tailwindcss/colors");
-const {
-  default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
 
-
-function addVariablesForColors({ addBase, theme }: { addBase: Function; theme: Function }) {
-  const allColors = flattenColorPalette(theme('colors'));
-  const newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, value]) => [`--${key}`, value])
-  );
-
-  addBase({
-    ':root': newVars,
-  });
-}
-
-const config: Config = {
+const config = {
+  darkMode: ["class"],
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
   ],
-  darkMode: 'class',
+  prefix: "",
   theme: {
-    extend: {
-      animation: {
-        spotlight: "spotlight 2s ease .75s 1 forwards",
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
       },
+    },
+    extend: {
       keyframes: {
-        spotlight: {
-          "0%": {
-            opacity: '0',
-            transform: "translate(-72%, -62%) scale(0.5)",
-          },
-          "100%": {
-            opacity: '1',
-            transform: "translate(-50%,-40%) scale(1)",
-          },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
-      backgroundImage: {
-        "primary-gradient": "linear-gradient(92.59deg, #1d4ed8 -2.98%, #5a2fd3 25.29%, #86198f 101.4%)",
-      },
-      colors: {
-        darkBackground: '#101010',
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [
-    addVariablesForColors,
-  ],
-};
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config
 
-export default config;
+export default config
