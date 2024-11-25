@@ -50,13 +50,11 @@ const createMeeting: any = asyncHandler(async (req: any, res: Response) => {
       participants.map(async (participant: any) => {
         console.log("Particiapant: ", participant);
 
-        if (participant._id === createdBy) {
+        if (participant._id !== createdBy) {
           return null;
         }
         if (participant) {
-          const user: any = await User.findOne({
-            email: participant,
-          });
+          const user: any = await User.findOne();
           if (user) {
             return {
               userId: user.id.toString(),
