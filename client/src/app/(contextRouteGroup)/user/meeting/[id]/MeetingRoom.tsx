@@ -335,7 +335,7 @@ const MeetingRoom = () => {
                 />
               </div>
             ) : showChat && channel ? (
-              <ChatBox channel={channel} close={setShowChat} />
+              <ChatBox close={setShowChat} />
             ) : (
               <div className="flex items-center justify-center min-h-screen bg-gray-900">
                 <Loader2 className="animate-spin text-indigo-500" size={50} />

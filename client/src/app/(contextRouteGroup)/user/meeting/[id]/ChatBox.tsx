@@ -7,7 +7,6 @@ import {
   MessageList,
   Window,
 } from "stream-chat-react";
-import chatClient from "@/lib/streamChatConfig";
 import { Card, IconButton } from "@mui/material";
 import "stream-chat-react/dist/css/v2/index.css";
 import { CrossCircledIcon } from "@radix-ui/react-icons";
@@ -15,11 +14,10 @@ import "@/styles/chatbox.css";
 import { Loader2 } from "lucide-react";
 
 interface ChatBoxProps {
-  channel: any;
   close: any;
 }
 
-const ChatBox: React.FC<ChatBoxProps> = ({ channel, close }) => {
+const ChatBox: React.FC<ChatBoxProps> = ({ close }) => {
   if (!channel)
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -40,8 +38,8 @@ const ChatBox: React.FC<ChatBoxProps> = ({ channel, close }) => {
         />
       </IconButton>
       <Card className="card w-full h-full max-w-lg bg-black text-white shadow-lg rounded-lg overflow-hidden">
-        <Chat client={chatClient} theme="str-chat__theme-dark">
-          <Channel channel={channel}>
+        <Chat client={} theme="str-chat__theme-dark">
+          <Channel>
             <Window>
               <ChannelHeader />
               <MessageList />
