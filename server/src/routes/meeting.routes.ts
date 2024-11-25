@@ -7,7 +7,7 @@ const router = Router()
 router.route("/get-meeting/:id").get(getMeeting)
 
 router.use(verifyJWT)
-router.route("/create-meeting").post(createMeeting)
+router.route("/createmeeting").post(createMeeting)
 router.route("/add-participant").put(addJoinedParticipant)
 router.route("/end-meeting/:meetingId").put(endMeeting)
 router.route("/send-meeting-notification/:roomId").get(sendEmailAtScheduledTime)
